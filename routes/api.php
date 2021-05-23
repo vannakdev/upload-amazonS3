@@ -24,5 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', LoginController::class);
 Route::post('/logout', LogoutController::class);
 
-Route::middleware('auth:sanctum')->get('/files',[ FileController::class,'index']);
 Route::middleware('auth:sanctum')->post('/files/signed',[ FileController::class,'signed']);
+Route::middleware('auth:sanctum')->get('/files',[ FileController::class,'index']);
+Route::middleware('auth:sanctum')->post('/files',[ FileController::class,'store']);
+Route::middleware('auth:sanctum')->delete('/files/{file:uuid}',[ FileController::class,'destroy']);
+
